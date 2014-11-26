@@ -1,6 +1,6 @@
 Name:                reflection-without-remorse
 Version:             0.9.2
-Synopsis:	         Free and operational monad that efficiently support alternating between building and observing.
+Synopsis:	         Efficient free and operational monads.
 Description:         Free and operational monad that efficiently support alternating between building and observing.
 License:             BSD3
 License-file:        LICENSE
