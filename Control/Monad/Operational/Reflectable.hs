@@ -10,7 +10,7 @@
 -- Stability   :  provisional
 -- Portability :  portable
 -- An operational monad that supports alternating between building and observing.
--- It supports all operatorions ('>>=', 'return', 'fromView' and 'toView') in worst case constant time.
+-- It supports all operations ('>>=', 'return', 'fromView' and 'toView') in worst case constant time.
 --
 -- See the paper Reflection without Remorse: Revealing a hidden sequence to speed up Monadic Reflection, Atze van der Ploeg and Oleg Kiselyov, Haskell Symposium 2014
 -- for more details.
