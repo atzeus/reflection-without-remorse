@@ -21,6 +21,8 @@
 module Control.Monad.Free.Reflectable(FreeMonadView(..),FreeMonad, fromView,toView) where
 
 import Data.TASequence.FastCatQueue
+import Control.Monad
+import Control.Applicative
 
 newtype FC f a b = FC (a -> FreeMonad f b)
 type FMExp f a b = FastTCQueue (FC f) a b
@@ -44,4 +46,10 @@ instance Monad (FreeMonad f) where
   return = fromView . Pure
   (FM m r) >>= f = FM m (r >< tsingleton (FC f))
 
+instance Functor (FreeMonad f) where
+  fmap = liftM
+
+instance Applicative (FreeMonad f) where
+  pure = return
+  (<*>) = ap
 

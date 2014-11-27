@@ -22,6 +22,8 @@
 module Control.Monad.Operational.Reflectable(Program,ProgramView(..), fromView, toView) where
 
 import Data.TASequence.FastCatQueue
+import Control.Monad
+import Control.Applicative
 
 newtype TermMCont r a b = TC (a -> Program r b)
 type TermCExp r a b = FastTCQueue (TermMCont r) a b
@@ -47,3 +49,10 @@ toView (Program x s) = case x of
 instance Monad (Program r) where
   return = fromView . Return
   (Program t s) >>= f = Program t (s |> TC f)
+
+instance Functor (Program r) where
+  fmap = liftM
+
+instance Applicative (Program r) where
+  pure = return
+  (<*>) = ap
