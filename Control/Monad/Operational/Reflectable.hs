@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification,GADTs #-}
+{-# LANGUAGE ExistentialQuantification,GADTs,Rank2Types #-}
 
 
 -----------------------------------------------------------------------------
@@ -49,6 +49,17 @@ toView (Program x s) = case x of
 instance Monad (Program r) where
   return = fromView . Return
   (Program t s) >>= f = Program t (s |> TC f)
+
+instr :: r x -> Program r x
+instr r = fromView $ Bind r return
+
+interpretWithMonad :: Monad m => (forall a. r a -> m a) -> Program r b -> m b
+interpretWithMonad f = loop where 
+  loop m = case toView m of
+       Return x -> return x
+       Bind i c -> f i >>= loop . c
+ 
+
 
 instance Functor (Program r) where
   fmap = liftM
