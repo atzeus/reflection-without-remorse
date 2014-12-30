@@ -19,7 +19,7 @@
 -- Talk : <http://www.youtube.com/watch?v=_XoI65Rxmss>
 -----------------------------------------------------------------------------
 
-module Control.Monad.Operational.Reflectable(Program,ProgramView(..), fromView, toView) where
+module Control.Monad.Operational.Reflectable(Program,ProgramView(..), fromView, toView, instr,interpretWithMonad) where
 
 import Data.TASequence.FastCatQueue
 import Control.Monad

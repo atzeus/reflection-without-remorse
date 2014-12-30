@@ -1,3 +1,4 @@
+0.9.5: Non-exported utility functions... not so practical
 0.9.4: Added utility functions to Operational monad
 0.9.3: Added applicative and functor instances
 0.9.2: Fixed stupid spelling error
